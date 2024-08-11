@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from infractions.views import CreateInfractionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/save_infractions/', CreateInfractionView.as_view(), name='infractions_api')
 ]
