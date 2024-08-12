@@ -17,6 +17,7 @@ class OfficerAdmin(admin.ModelAdmin):
         return obj.user.first_name
 
     def save_model(self, request: Any, obj: Any, form: Any, change: Any) -> None:
+
         form.save(commit=True)
         super().save_model(request, obj, form, change)
 

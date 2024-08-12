@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 django-rest-framework = "^0.1.0"
 djangorestframework-simplejwt = "^5.3.1"
+faker = "^26.3.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"

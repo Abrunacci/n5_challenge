@@ -1,12 +1,15 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
+from django.utils.translation import gettext_lazy as _
 
 from .models import Infraction
 from vehicles.models import Vehicle
-from django.utils.translation import gettext_lazy as _
+
 
 
 class InfractionSerializer(serializers.ModelSerializer):
+    license_plate = serializers.CharField(max_length=30, read_only=True)
+
     class Meta:
         model = Infraction
         fields = "__all__"
@@ -27,7 +30,8 @@ class InfractionSerializer(serializers.ModelSerializer):
             return value
 
     def validate(self, data):
-        vehicle = get_object_or_404(Vehicle, pk=self.initial_data["vehicle"])
+        vehicle = get_object_or_404(Vehicle, pk=self.initial_data["license_plate"])
+        self.initial_data["vehicle"] = self.initial_data["license_plate"]
         self.initial_data["person"] = vehicle.owner.id
         self.initial_data["officer"] = self.context["request"].user.officer.id
         return data
