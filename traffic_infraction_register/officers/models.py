@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
+
 # Create your models here.
 class Officer(models.Model):
     badge = models.CharField(_("Badge number"), max_length=20, unique=True)

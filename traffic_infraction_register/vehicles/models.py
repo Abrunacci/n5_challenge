@@ -5,11 +5,16 @@ from persons.models import Person
 
 # Create your models here.
 class Vehicle(models.Model):
-    license_plate = models.CharField(_("License Plate"), max_length=10, unique=True, primary_key=True)
+    license_plate = models.CharField(
+        _("License Plate"), max_length=10, unique=True, primary_key=True
+    )
     brand = models.CharField(_("Brand"), max_length=20)
     color = models.CharField(_("Color"), max_length=15)
-    owner = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='vehicles')
+    owner = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="vehicles")
 
     class Meta:
         verbose_name = _("Vehicle")
         verbose_name_plural = _("Vehicles")
+
+    def __str__(self):
+        return f"{self.license_plate} - {self.brand} ({self.color})"

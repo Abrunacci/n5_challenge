@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class OfficerConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'officers'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "officers"

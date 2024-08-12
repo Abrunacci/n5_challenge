@@ -9,21 +9,46 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('officers', '0001_initial'),
-        ('persons', '0001_initial'),
+        ("officers", "0001_initial"),
+        ("persons", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Infraction',
+            name="Infraction",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField()),
-                ('type', models.CharField(max_length=100)),
-                ('description', models.CharField(blank=True, max_length=250, null=True)),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('officer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='infractions_delivered', to='officers.officer')),
-                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='infractions_received', to='persons.person')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateField()),
+                ("type", models.CharField(max_length=100)),
+                (
+                    "description",
+                    models.CharField(blank=True, max_length=250, null=True),
+                ),
+                ("amount", models.DecimalField(decimal_places=2, max_digits=10)),
+                (
+                    "officer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="infractions_delivered",
+                        to="officers.officer",
+                    ),
+                ),
+                (
+                    "person",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="infractions_received",
+                        to="persons.person",
+                    ),
+                ),
             ],
         ),
     ]
